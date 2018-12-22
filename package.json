@@ -1,0 +1,15 @@
+{
+  "name": "account-eligibility",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:rkpop/account-eligibility.git",
+  "author": "Jonathan Nicholas <jonathan.nicholas@protonmail.com>",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "express": "^4.16.4",
+    "googleapis": "27",
+    "nodemon": "^1.18.9",
+    "passport": "^0.4.0",
+    "passport-reddit": "^0.2.4"
+  }
+}
