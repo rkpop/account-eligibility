@@ -9,6 +9,8 @@ const api_init = require("./lib/sheets");
 
 const REDDIT_ID = process.env.REDDIT_ID;
 const REDDIT_SECRET = process.env.REDDIT_SECRET;
+const CUTOFF_DATE = luxon.DateTime.utc(2018, 12, 22);
+
 let GoogleSheets;
 api_init().then(result => {
   GoogleSheets = result;
@@ -37,10 +39,7 @@ passport.use(
       callbackURL: `${BASE_URL}/auth/afterwards`
     },
     (accessToken, refreshToken, profile, done) => {
-      if (
-        luxon.DateTime.fromSeconds(profile._json.created_utc) >
-        luxon.DateTime.utc(2019, 12, 22)
-      ) {
+      if (parseUnix(profile._json.created_utc) > CUTOFF_DATE) {
         return done(null, null);
       } else {
         GoogleSheets.findUsername(profile.name).then(result => {
@@ -84,3 +83,8 @@ app.get("/ballot", (req, res) => {
   res.send(`Hi, ${req.user.name}`);
 });
 app.listen(9999);
+
+// function to parse unix timestamp and convert it into Luxon.js datetime object
+const parseUnix = timestamp => {
+  return luxon.DateTime.fromSeconds(timestamp);
+};
