@@ -17,3 +17,23 @@ node.js app to check whether user's account age is eligible to do the voting/pol
 * source the file at terminal
 
 * `nodemon .`
+
+## Modify landing page
+
+The page is written with Bulma and Sass.
+
+Requirement:
+
+* Yarn
+
+Procedure:
+
+* go to `static/`
+
+* `yarn install`
+
+* `yarn start`
+
+* Make your changes at `main.scss` and `index.html`
+
+* `yarn deploy`

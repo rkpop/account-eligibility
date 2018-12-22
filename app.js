@@ -66,6 +66,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.static("static/"));
 
 app.get("/auth", (req, res, next) => {
   req.session.state = crypto.randomBytes(32).toString("hex");
