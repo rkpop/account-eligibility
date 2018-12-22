@@ -1,7 +1,6 @@
 const express = require("express");
 const expressSession = require("express-session");
 const passport = require("passport");
-const util = require("util");
 const crypto = require("crypto");
 const strat = require("passport-reddit").Strategy;
 const luxon = require("luxon");
