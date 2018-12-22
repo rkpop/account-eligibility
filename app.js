@@ -9,7 +9,7 @@ const api_init = require("./lib/sheets");
 
 const REDDIT_ID = process.env.REDDIT_ID;
 const REDDIT_SECRET = process.env.REDDIT_SECRET;
-const CUTOFF_DATE = luxon.DateTime.utc(2018, 12, 22);
+const CUTOFF_DATE = luxon.DateTime.utc(2019, 1, 1);
 
 let GoogleSheets;
 api_init().then(result => {
@@ -72,13 +72,19 @@ app.get("/auth", (req, res, next) => {
   })(req, res, next);
 });
 
-app.get("/auth/afterwards", passport.authenticate("reddit"), (req, res) => {
-  res.redirect("/ballot");
-});
+app.get(
+  "/auth/afterwards",
+  passport.authenticate("reddit", {
+    failureRedirect: "https://reddit.com/r/kpop"
+  }),
+  (req, res) => {
+    res.redirect("/ballot");
+  }
+);
 
 app.get("/ballot", (req, res) => {
   if (!req.user) {
-    res.redirect("/");
+    res.redirect("https://reddit.com/r/kpop");
   }
   res.send(`Hi, ${req.user.name}`);
 });
