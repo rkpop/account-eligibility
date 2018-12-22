@@ -10,6 +10,8 @@ node.js app to check whether user's account age is eligible to do the voting/pol
 
 * `yarn install`
 
+* obtain credentials.json and `token.json` (script soon) for Google Sheets API
+
 * copy `sample.env` as `.env` and fill out the necessary keys
 
 * source the file at terminal
