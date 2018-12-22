@@ -56,6 +56,7 @@ passport.use(
 );
 
 const app = express();
+app.set("view engine", "ejs");
 app.use(
   expressSession({
     secret: "youtubeyoutubeyoutubeisbetterthantv",
@@ -87,9 +88,11 @@ app.get(
 app.get("/ballot", (req, res) => {
   if (!req.user) {
     res.redirect(FAILURE_REDIRECT);
+  } else {
+    return res.render("ballot.ejs", { username: req.user.name });
   }
-  res.send(`Hi, ${req.user.name}`);
 });
+
 app.listen(9999);
 
 // function to parse unix timestamp and convert it into Luxon.js datetime object

@@ -6,6 +6,7 @@
   "author": "Jonathan Nicholas <jonathan.nicholas@protonmail.com>",
   "license": "BSD-3-Clause",
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "googleapis": "27",
