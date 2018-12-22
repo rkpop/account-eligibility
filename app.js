@@ -16,6 +16,8 @@ api_init().then(result => {
   GoogleSheets = result;
 });
 
+const FAILURE_REDIRECT = "https://reddit.com/r/kpop";
+
 let BASE_URL;
 if (process.env.EXEC_MODE == "PROD") {
   BASE_URL = "https://awards.redditkpop.com";
@@ -75,7 +77,7 @@ app.get("/auth", (req, res, next) => {
 app.get(
   "/auth/afterwards",
   passport.authenticate("reddit", {
-    failureRedirect: "https://reddit.com/r/kpop"
+    failureRedirect: FAILURE_REDIRECT
   }),
   (req, res) => {
     res.redirect("/ballot");
@@ -84,7 +86,7 @@ app.get(
 
 app.get("/ballot", (req, res) => {
   if (!req.user) {
-    res.redirect("https://reddit.com/r/kpop");
+    res.redirect(FAILURE_REDIRECT);
   }
   res.send(`Hi, ${req.user.name}`);
 });
