@@ -78,7 +78,7 @@ app.get("/auth", (req, res, next) => {
 app.get(
   "/auth/afterwards",
   passport.authenticate("reddit", {
-    failureRedirect: FAILURE_REDIRECT
+    failureRedirect: "/ineligible"
   }),
   (req, res) => {
     res.redirect("/ballot");
@@ -87,10 +87,14 @@ app.get(
 
 app.get("/ballot", (req, res) => {
   if (!req.user) {
-    res.redirect(FAILURE_REDIRECT);
+    res.redirect("/");
   } else {
     return res.render("ballot.ejs", { username: req.user.name });
   }
+});
+
+app.get("/ineligible", (_, res) => {
+  res.sendFile(__dirname + "/static/ineligible.html");
 });
 
 app.listen(9999);
