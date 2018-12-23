@@ -24,6 +24,11 @@ if (process.env.EXEC_MODE == "PROD") {
   BASE_URL = "http://localhost:9999";
 }
 
+let PORT = process.env.PORT;
+if (PORT == null || port == "") {
+  PORT = 9999;
+}
+
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
@@ -97,7 +102,7 @@ app.get("/ineligible", (_, res) => {
   res.sendFile(__dirname + "/static/ineligible.html");
 });
 
-app.listen(9999);
+app.listen(PORT);
 
 // function to parse unix timestamp and convert it into Luxon.js datetime object
 const parseUnix = timestamp => {
