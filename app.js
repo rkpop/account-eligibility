@@ -25,7 +25,7 @@ if (process.env.EXEC_MODE == "PROD") {
 }
 
 let PORT = process.env.PORT;
-if (PORT == null || port == "") {
+if (PORT == null || PORT == "") {
   PORT = 9999;
 }
 
