@@ -19,7 +19,7 @@ const FAILURE_REDIRECT = "https://reddit.com/r/kpop";
 
 let BASE_URL;
 if (process.env.EXEC_MODE == "PROD") {
-  BASE_URL = "https://awards.redditkpop.com";
+  BASE_URL = "http://awards.redditkpop.com";
 } else {
   BASE_URL = "http://localhost:9999";
 }
