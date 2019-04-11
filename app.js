@@ -8,18 +8,18 @@ const api_init = require("./lib/sheets");
 
 const REDDIT_ID = process.env.REDDIT_ID;
 const REDDIT_SECRET = process.env.REDDIT_SECRET;
-const CUTOFF_DATE = luxon.DateTime.utc(2019, 1, 1);
+const CUTOFF_DATE = luxon.DateTime.utc(2019, 4, 11);
 
-let GoogleSheets;
+/* let GoogleSheets;
 api_init().then(result => {
   GoogleSheets = result;
-});
+}); */
 
 const FAILURE_REDIRECT = "https://reddit.com/r/kpop";
 
 let BASE_URL;
 if (process.env.EXEC_MODE == "PROD") {
-  BASE_URL = "http://awards.redditkpop.com";
+  BASE_URL = "http://poll.redditkpop.com";
 } else {
   BASE_URL = "http://localhost:9999";
 }
@@ -29,17 +29,16 @@ if (PORT == null || PORT == "") {
   PORT = 9999;
 }
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user);
 });
 
-passport.deserializeUser(function(obj, done) {
+passport.deserializeUser(function (obj, done) {
   done(null, obj);
 });
 
 passport.use(
-  new strat(
-    {
+  new strat({
       clientID: REDDIT_ID,
       clientSecret: REDDIT_SECRET,
       callbackURL: `${BASE_URL}/auth/afterwards`
@@ -48,12 +47,7 @@ passport.use(
       if (parseUnix(profile._json.created_utc) > CUTOFF_DATE) {
         return done(null, null);
       } else {
-        GoogleSheets.findUsername(profile.name).then(result => {
-          if (!result) {
-            let _ = GoogleSheets.appendUsername(profile.name);
-          }
-          return done(null, profile);
-        });
+        return done(null, profile);;
       }
     }
   )
@@ -94,7 +88,7 @@ app.get("/ballot", (req, res) => {
   if (!req.user) {
     res.redirect("/");
   } else {
-    return res.render("ballot.ejs", { username: req.user.name });
+    return res.render("ballot.ejs");
   }
 });
 
