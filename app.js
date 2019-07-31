@@ -8,31 +8,18 @@ const api_init = require("./lib/sheets");
 
 const REDDIT_ID = process.env.REDDIT_ID;
 const REDDIT_SECRET = process.env.REDDIT_SECRET;
-<<<<<<< HEAD
-const CUTOFF_DATE = luxon.DateTime.utc(2019, 4, 11);
-=======
 const CUTOFF_DATE = luxon.DateTime.utc(2019, 2, 1);
->>>>>>> 82fcc4f7c0f64cb1472b1708ae3509f970fff302
 
 /* let GoogleSheets;
 api_init().then(result => {
   GoogleSheets = result;
-<<<<<<< HEAD
-});
- */
-=======
 }); */
 
->>>>>>> 82fcc4f7c0f64cb1472b1708ae3509f970fff302
 const FAILURE_REDIRECT = "https://reddit.com/r/kpop";
 
 let BASE_URL;
 if (process.env.EXEC_MODE == "PROD") {
-<<<<<<< HEAD
-  BASE_URL = "http://poll.redditkpop.com";
-=======
   BASE_URL = "http://census.redditkpop.com";
->>>>>>> 82fcc4f7c0f64cb1472b1708ae3509f970fff302
 } else {
   BASE_URL = "http://localhost:9999";
 }
@@ -42,16 +29,17 @@ if (PORT == null || PORT == "") {
   PORT = 9999;
 }
 
-passport.serializeUser(function (user, done) {
+passport.serializeUser(function(user, done) {
   done(null, user);
 });
 
-passport.deserializeUser(function (obj, done) {
+passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
 passport.use(
-  new strat({
+  new strat(
+    {
       clientID: REDDIT_ID,
       clientSecret: REDDIT_SECRET,
       callbackURL: `${BASE_URL}/auth/afterwards`
