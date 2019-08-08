@@ -48,9 +48,9 @@ passport.use(
         parseUnix(profile._json.created_utc) <=
         luxon.DateTime.utc().minus({ months: 6 })
       ) {
-        return done(null, null);
-      } else {
         return done(null, profile);
+      } else {
+        return done(null, null);
       }
     }
   )
