@@ -8,7 +8,6 @@ const api_init = require("./lib/sheets");
 
 const REDDIT_ID = process.env.REDDIT_ID;
 const REDDIT_SECRET = process.env.REDDIT_SECRET;
-const CUTOFF_DATE = luxon.DateTime.utc(2019, 2, 1);
 
 /* let GoogleSheets;
 api_init().then(result => {
@@ -45,7 +44,10 @@ passport.use(
       callbackURL: `${BASE_URL}/auth/afterwards`
     },
     (accessToken, refreshToken, profile, done) => {
-      if (parseUnix(profile._json.created_utc) > CUTOFF_DATE) {
+      if (
+        parseUnix(profile._json.created_utc) <=
+        luxon.DateTime.utc().minus({ months: 6 })
+      ) {
         return done(null, null);
       } else {
         return done(null, profile);
