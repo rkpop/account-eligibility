@@ -41,7 +41,8 @@ passport.use(
     {
       clientID: REDDIT_ID,
       clientSecret: REDDIT_SECRET,
-      callbackURL: `${BASE_URL}/auth/afterwards`
+      callbackURL: `${BASE_URL}/auth/afterwards`,
+      authorizationURL: "https://ssl.reddit.com/api/v1/authorize.compact"
     },
     (accessToken, refreshToken, profile, done) => {
       if (
