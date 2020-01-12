@@ -18,7 +18,7 @@ const FAILURE_REDIRECT = "https://reddit.com/r/kpop";
 
 let BASE_URL;
 if (process.env.EXEC_MODE == "PROD") {
-  BASE_URL = "http://census.redditkpop.com";
+  BASE_URL = "http://poll.redditkpop.com";
 } else {
   BASE_URL = "http://localhost:9999";
 }
@@ -46,8 +46,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       if (
-        parseUnix(profile._json.created_utc) <=
-        luxon.DateTime.utc().minus({ months: 6 })
+        parseUnix(profile._json.created_utc) <= luxon.DateTime.utc(2020, 1, 1)
       ) {
         return done(null, profile);
       } else {
@@ -92,7 +91,7 @@ app.get("/ballot", (req, res) => {
   if (!req.user) {
     res.redirect("/");
   } else {
-    return res.render("ballot.ejs");
+    return res.render("ballot.ejs", { username: req.user.name });
   }
 });
 
