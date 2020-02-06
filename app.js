@@ -46,7 +46,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       if (
-        parseUnix(profile._json.created_utc) <= luxon.DateTime.utc(2020, 1, 1)
+        parseUnix(profile._json.created_utc) <= luxon.DateTime.utc(2020, 2, 7)
       ) {
         return done(null, profile);
       } else {
