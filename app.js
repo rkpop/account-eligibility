@@ -4,15 +4,10 @@ const passport = require("passport");
 const crypto = require("crypto");
 const strat = require("passport-reddit").Strategy;
 const luxon = require("luxon");
-const api_init = require("./lib/sheets");
 
 const REDDIT_ID = process.env.REDDIT_ID;
 const REDDIT_SECRET = process.env.REDDIT_SECRET;
 
-/* let GoogleSheets;
-api_init().then(result => {
-  GoogleSheets = result;
-}); */
 
 const FAILURE_REDIRECT = "https://reddit.com/r/kpop";
 
@@ -46,7 +41,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       if (
-        parseUnix(profile._json.created_utc) <= luxon.DateTime.utc(2020, 8, 1)
+        parseUnix(profile._json.created_utc) <= luxon.DateTime.utc(2021, 1, 1)
       ) {
         return done(null, profile);
       } else {
