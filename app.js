@@ -41,7 +41,7 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       if (
-        parseUnix(profile._json.created_utc) <= luxon.DateTime.utc(2022, 1, 1)
+        parseUnix(profile._json.created_utc) <= luxon.DateTime.fromObject({year: 2022, month: 8, day: 1}, {zone: "Asia/Seoul"})
       ) {
         return done(null, profile);
       } else {
@@ -98,5 +98,5 @@ app.listen(PORT);
 
 // function to parse unix timestamp and convert it into Luxon.js datetime object
 const parseUnix = timestamp => {
-  return luxon.DateTime.fromSeconds(timestamp);
+  return luxon.DateTime.fromSeconds(timestamp).setZone("Asia/Seoul");
 };
