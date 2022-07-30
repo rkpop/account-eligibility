@@ -13,7 +13,7 @@ const FAILURE_REDIRECT = "https://reddit.com/r/kpop";
 
 let BASE_URL;
 if (process.env.EXEC_MODE == "PROD") {
-  BASE_URL = "http://poll.redditkpop.com";
+  BASE_URL = "https://census.redditkpop.com";
 } else {
   BASE_URL = "http://localhost:9999";
 }
