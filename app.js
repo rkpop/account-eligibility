@@ -2,8 +2,7 @@ const express = require("express");
 const expressSession = require("express-session");
 const passport = require("passport");
 const crypto = require("crypto");
-const importSync = require("import-sync");
-const strat =  importSync('passport-reddit').RedditStrategy;
+const strat =  require('passport-reddit').Strategy;
 const luxon = require("luxon");
 
 const REDDIT_ID = process.env.REDDIT_ID;
@@ -38,7 +37,8 @@ passport.use(
       clientID: REDDIT_ID,
       clientSecret: REDDIT_SECRET,
       callbackURL: `${BASE_URL}/auth/afterwards`,
-      authorizationURL: "https://ssl.reddit.com/api/v1/authorize.compact"
+      authorizationURL: "https://www.reddit.com/api/v1/authorize.compact",
+      tokenURL: "https://www.reddit.com/api/v1/access_token",
     },
     (accessToken, refreshToken, profile, done) => {
       if (

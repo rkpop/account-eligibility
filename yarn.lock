@@ -1279,6 +1279,11 @@ oauth@0.10.x:
   resolved "https://registry.npmjs.org/oauth/-/oauth-0.10.2.tgz"
   integrity sha512-JtFnB+8nxDEXgNyniwz573xxbKSOu3R8D40xQKqcjwJ2CDkYqUDI53o6IuzDJBx60Z8VKCm271+t8iFjakrl8Q==
 
+oauth@0.9.x:
+  version "0.9.15"
+  resolved "https://registry.yarnpkg.com/oauth/-/oauth-0.9.15.tgz#bd1fefaf686c96b75475aed5196412ff60cfb9c1"
+  integrity sha512-a5ERWK1kh38ExDEfoO6qUHJb32rd7aYmPHuyCu3Fta/cnICvYmgd2uhuKXvPD+PXB+gCEYYEaQdIRAjCOwAKNA==
+
 object-copy@^0.1.0:
   version "0.1.0"
   resolved "https://registry.npmjs.org/object-copy/-/object-copy-0.1.0.tgz"
@@ -1339,9 +1344,18 @@ pascalcase@^0.1.1:
   resolved "https://registry.npmjs.org/pascalcase/-/pascalcase-0.1.1.tgz"
   integrity sha1-s2PlXoAGym/iF4TS2yK9FdeRfxQ=
 
-passport-oauth2@^1.6:
+passport-oauth1@1.x.x:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/passport-oauth1/-/passport-oauth1-1.3.0.tgz#5d57f1415c8e28e46b461a12ec1b492934f7c354"
+  integrity sha512-8T/nX4gwKTw0PjxP1xfD0QhrydQNakzeOpZ6M5Uqdgz9/a/Ag62RmJxnZQ4LkbdXGrRehQHIAHNAu11rCP46Sw==
+  dependencies:
+    oauth "0.9.x"
+    passport-strategy "1.x.x"
+    utils-merge "1.x.x"
+
+passport-oauth2@1.x.x:
   version "1.8.0"
-  resolved "https://registry.npmjs.org/passport-oauth2/-/passport-oauth2-1.8.0.tgz"
+  resolved "https://registry.yarnpkg.com/passport-oauth2/-/passport-oauth2-1.8.0.tgz#55725771d160f09bbb191828d5e3d559eee079c8"
   integrity sha512-cjsQbOrXIDE4P8nNb3FQRCCmJJ/utnFKEz2NX209f7KOHPoX18gF7gBzBbLLsj2/je4KrgiwLLGjf0lm9rtTBA==
   dependencies:
     base64url "3.x.x"
@@ -1350,12 +1364,21 @@ passport-oauth2@^1.6:
     uid2 "0.0.x"
     utils-merge "1.x.x"
 
-passport-reddit@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/passport-reddit/-/passport-reddit-1.1.0.tgz"
-  integrity sha512-dLOg41JEyUIuHKF3L/RojrAWG8F/VbywkRzKxIMXUSo0+/ea4NZzlkywP/wsTGDH3z9/uMYVu5rKb52rwZl3iQ==
+passport-oauth@1.x:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/passport-oauth/-/passport-oauth-1.0.0.tgz#90aff63387540f02089af28cdad39ea7f80d77df"
+  integrity sha512-4IZNVsZbN1dkBzmEbBqUxDG8oFOIK81jqdksE3HEb/vI3ib3FMjbiZZ6MTtooyYZzmKu0BfovjvT1pdGgIq+4Q==
   dependencies:
-    passport-oauth2 "^1.6"
+    passport-oauth1 "1.x.x"
+    passport-oauth2 "1.x.x"
+
+passport-reddit@0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/passport-reddit/-/passport-reddit-0.2.4.tgz#4e5805d919a8f28f80c238f7da2d92a38067acc5"
+  integrity sha512-5Dfkf/WxLMF61aS/NhsWNGimrasl1lDZBU7jFGIIWnLV7dhWBUYOJCl/N4nOkBeZG5EbPeymrGfqet94DJ2GfQ==
+  dependencies:
+    passport-oauth "1.x"
+    pkginfo "0.3.x"
 
 passport-strategy@1.x.x:
   version "1.0.0"
@@ -1409,6 +1432,11 @@ pify@^4.0.0:
   version "4.0.1"
   resolved "https://registry.npmjs.org/pify/-/pify-4.0.1.tgz"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
+
+pkginfo@0.3.x:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.3.1.tgz#5b29f6a81f70717142e09e765bbeab97b4f81e21"
+  integrity sha512-yO5feByMzAp96LtP58wvPKSbaKAi/1C4kV9XpTctr6EepnP6F33RBNOiVrdz9BrPA98U2BMFsTNHo44TWcbQ2A==
 
 posix-character-classes@^0.1.0:
   version "0.1.1"
