@@ -2,7 +2,8 @@ const express = require("express");
 const expressSession = require("express-session");
 const passport = require("passport");
 const crypto = require("crypto");
-const strat = require("passport-reddit").Strategy;
+const importSync = require("import-sync");
+const strat =  importSync('passport-reddit').RedditStrategy;
 const luxon = require("luxon");
 
 const REDDIT_ID = process.env.REDDIT_ID;
